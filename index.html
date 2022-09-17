@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot ARM</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</head>
+
+<script>
+
+function post_values()
+{
+  $.post(
+  "",
+  { elbow: elbow.value, base: base.value, arm: arm.value, wrist: wrist.value, finger: finger.value },
+  function(data) {
+    
+  }
+);
+};
+
+</script>
+
+<body>
+  <div class="container bg-light m-3 p-3">
+    <h1>Robot ARM</h1>
+    <h5>With the Pimoroni Inventor 2040 W</h5>
+    <hr/>
+    <p>Use the sliders below to adjust the robot position</p>
+    
+
+<form action="/" method="POST">
+    <label>Base</label>
+    <div class="slidecontainer">
+      <input type="range" min="-50" max="50" value="0" class="slider" id="base" onchange="post_values()">
+    </div>
+    <label>Elbow</label>
+    <div class="slidecontainer">
+        <input type="range" min="-50" max="50" value="0" class="slider" id="elbow" onchange="post_values()">
+    </div>
+    <label>Arm</label>
+    <div class="slidecontainer">
+        <input type="range" min="-50" max="50" value="0" class="slider" id="arm" onchange="post_values()">
+    </div>
+    <label>Wrist</label>
+    <div class="slidecontainer">
+      <input type="range" min="-50" max="50" value="0" class="slider" id="wrist" onchange="post_values()">
+    </div>
+    <label>Finger</label>
+    <div class="slidecontainer">
+        <input type="range" min="-50" max="50" value="0" class="slider" id="finger" onchange="post_values()">
+    </div>
+  </form>
+
+  </div>
+</body>
+</html>
