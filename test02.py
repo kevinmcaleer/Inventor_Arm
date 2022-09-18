@@ -6,7 +6,6 @@ from inventor import Inventor2040W, SERVO_1, SERVO_2, SERVO_3, SERVO_4, SERVO_5,
 from time import sleep
 import math
 
-
 # Connect to WiFi
 ip = connect_to_wifi(wifi_ssid, wifi_password)
 
@@ -20,6 +19,7 @@ for servo in board.servos:
     sleep(1)
 
 def position(arm=None, wrist=None, elbow=None, finger=None, base=None):
+    """ Set the servo positions """
     if finger is not None:
         board.servos[SERVO_2].value(finger)
     if arm is not None:
@@ -34,7 +34,7 @@ def position(arm=None, wrist=None, elbow=None, finger=None, base=None):
 
 @server.route('/', methods=['GET','POST'])
 def index(request):
-#     print(f'request: {request.method}, form data: {request.form}')
+
     if request.method == 'GET':
         return render_template('index.html')
     elif request.method == 'POST':
@@ -54,16 +54,14 @@ def index(request):
             position(wrist=int(wrist))
         if finger is not None:
             position(finger=int(finger))
-        # elbow = request.form['elbow']
-        # arm = request.form['arm']
-        # base = request.form['base']
-        # finger = request.form['finger']
-        # wrist = request.form['wrist']
-#         logging.info('elbow: %s, arm: %s, base: %s, finger: %s, wrist: %s' % (elbow, arm, base, finger, wrist))
 
-    return render_template('index.html')
+        # Try without the line below to speed up the response
+        return render_template('index.html')
     
+
+# Show the IP Address
 logging.info(f'IP: {ip}')
 logging.is_disabled = True
 
+# Start the server
 server.run()
