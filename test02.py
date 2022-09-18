@@ -23,9 +23,9 @@ def position(arm=None, wrist=None, elbow=None, finger=None, base=None):
     if finger is not None:
         board.servos[SERVO_2].value(finger)
     if arm is not None:
-        board.servos[SERVO_4].value(arm)
-    if wrist is not None:
         board.servos[SERVO_3].value(wrist)
+    if wrist is not None:
+        board.servos[SERVO_4].value(arm)
     if elbow is not None:
         board.servos[SERVO_5].value(elbow)
     if base is not None:
