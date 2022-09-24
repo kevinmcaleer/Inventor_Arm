@@ -16,15 +16,15 @@ board = Inventor2040W()
 for servo in board.servos:
     servo.to_mid()
     print(f'servo: {servo}, value {servo.value()}')
-    sleep(1)
+    sleep(0.1)
 
 def position(arm=None, wrist=None, elbow=None, finger=None, base=None):
     """ Set the servo positions """
     if finger is not None:
         board.servos[SERVO_2].value(finger)
-    if arm is not None:
-        board.servos[SERVO_3].value(wrist)
     if wrist is not None:
+        board.servos[SERVO_3].value(wrist)
+    if arm is not None:
         board.servos[SERVO_4].value(arm)
     if elbow is not None:
         board.servos[SERVO_5].value(elbow)
